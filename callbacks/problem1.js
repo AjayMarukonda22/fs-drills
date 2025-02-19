@@ -1,6 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
+/*
+    Problem 1:
+    
+    Using callbacks and the fs module's asynchronous functions, do the following:
+        1. Create a directory of random JSON files
+        2. Delete those files simultaneously 
+*/
+
 // 1. Create a directory and generate JSON files
 const createDirectoryAndFiles = (dirPath, callback) => {
     fs.mkdir(dirPath, (err) => {
@@ -28,7 +36,7 @@ const createDirectoryAndFiles = (dirPath, callback) => {
     });
 }
 
-// 2. Delete those files simultaneously 
+// 2. Delete those files simultaneously one by one
 const deleteFiles = (dirPath, callback) => {
     fs.readdir(dirPath, (err, files) => {
         if(err) {

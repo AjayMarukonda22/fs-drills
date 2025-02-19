@@ -52,7 +52,7 @@ const convertToLowerCaseAndWrite = (upperCaseFilePath, fileNamesFilePath, callba
         let sentences = lowerCasecontent.split('. ').map((sentence) => sentence.trim()).join('.\n');
 
         let lowerCaseFile = "lowerCaseFile.txt";
-        let lowerCaseFilePath = path.join(process.cwd(), '/test', lowerCaseFile);
+        let lowerCaseFilePath = path.join(process.cwd(), "/test", lowerCaseFile);
 
         fs.writeFile(lowerCaseFilePath, sentences, (err) => {
                if(err)
