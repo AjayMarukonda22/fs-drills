@@ -1,5 +1,6 @@
 const path = require('path');
-const { readFile, convertToUppercaseAndWrite, convertToLowerCaseAndWrite, sortTheContentAndWrite, readFilesAndDelete} = require('../problem2.js');
+const { readFile, convertToUppercaseAndWrite, convertToLowerCaseAndWrite, sortTheContentAndWrite, readFilesAndDelete} = require('../callbacks/problem2.js');
+const { readFileAsync, toUppercaseAndWriteAsync, toLowerCaseAndWriteAsync, sortTheContentAndWriteAsync, appendFileAsync, deleteFilesAsync} = require('../promises/problem2.js');
 
 const fileNamesFilePath = path.join(__dirname, 'filenames.txt');
 const lipsumFilePath = path.join('./', 'lipsum.txt');
@@ -46,3 +47,42 @@ readFile(lipsumFilePath, (err, content) => {
                   });
     });
 });
+
+//Promises
+readFileAsync(lipsumFilePath)
+                       .then((content) => {
+                      return toUppercaseAndWriteAsync(content);
+                            })
+                       .then((fileName) => {
+                      return appendFileAsync(fileNamesFilePath, fileName);
+                            })
+                       .then((fileName) =>  {
+                   let filePath = path.join(process.cwd(), '/test', fileName);
+                      return readFileAsync(filePath);
+                            })
+                        .then((content) => {
+                      return toLowerCaseAndWriteAsync(content);
+                            })
+                        .then((fileName) => {
+                      return appendFileAsync(fileNamesFilePath, fileName);
+                            })
+                        .then((fileName) => {
+                  let filePath = path.join(process.cwd(), '/test', fileName);
+                      return readFileAsync(filePath);
+                            })
+                        .then((content) => {
+                      return sortTheContentAndWriteAsync(content);
+                            })
+                        .then((fileName) => {
+                      return appendFileAsync(fileNamesFilePath, fileName);
+                            })
+                        .then(() => {
+                      return readFileAsync(fileNamesFilePath); 
+                            })
+                       .then((contents) => {
+                      return deleteFilesAsync(contents);
+                           })
+                       .catch((err) => {
+                        console.error(err);
+                          })
+
