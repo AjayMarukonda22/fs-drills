@@ -29,7 +29,7 @@ const createDirectoryAndFiles = (dirPath, callback) => {
                 filesCreated++;
                 if (filesCreated === 5)  {
                     console.log("created files successfully")
-                    return callback(null);
+                    return callback(null, dirPath);
                 }
             });
         }
@@ -41,7 +41,7 @@ const deleteFiles = (dirPath, callback) => {
     fs.readdir(dirPath, (err, files) => {
         if(err) {
             console.error("Error while reading files: ", err);
-            return ;
+            return callback(err);
         }
            
         let filesDeleted = 0;
@@ -52,13 +52,26 @@ const deleteFiles = (dirPath, callback) => {
                 }
                 
                 filesDeleted++;
-                if(filesDeleted === 5) {
-                   return callback(null);
+                if(filesDeleted === files.length) {
+                console.log("Deleted files successfully");
+                   return callback(null,dirPath);
                 }
             });
         }));
     });
 };
 
-module.exports = {createDirectoryAndFiles, deleteFiles};
+//3 delete directory
+const deleteDirectory = (dirPath, callback) => {
+    fs.rmdir(dirPath, (err) => {
+        if(err) 
+            return callback(err);
+        else {
+            console.log("deleted the directory successfully");
+            return callback(null);
+        }
+    })
+}
+
+module.exports = {createDirectoryAndFiles, deleteFiles, deleteDirectory};
 

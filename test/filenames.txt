@@ -1,3 +1,0 @@
-upperCaseFile.txt
-lowerCaseFile.txt
-sortedContentFile.txt
