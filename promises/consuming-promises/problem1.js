@@ -19,10 +19,6 @@ const createDirectory = (dirPath) => {
                 console.log('Created directory successfully');
                 return dirPath;
              })
-             .catch((err) => {
-                console.error('Error while creating directory', err);
-                throw err;
-             })
 }
 
 //create random files
@@ -41,10 +37,6 @@ const createRandomFiles = (dirPath, count) => {
                     console.log('Created files successfully');
                     return dirPath;
                   })
-                  .catch((err) => {
-                    console.error("Error while creating files", err);
-                    throw err;
-                  })
 }
 
 //read the directory
@@ -53,10 +45,6 @@ const readDirectory = (dirPath) => {
              .then((files) => {
                 console.log("Read the files successfully");
                 return files;
-             })
-             .catch((err) => {
-                console.error('error while reading the directory', err);
-                throw err;
              })
 }
 
@@ -74,10 +62,6 @@ const deleteFiles = (dirPath, files) => {
                     console.log("Deleted all the files successfully");
                     return dirPath;
                   })
-                  .catch((err) => {
-                    console.error('Error while deleting files');
-                    throw err;
-                  })
 }
 
 
@@ -86,9 +70,6 @@ const deleteDirectory = (dirPath) => {
     return fs.rmdir(dirPath)
             .then(() => {
                 console.log("Deleted the directory successfully");
-            })
-            .catch((err) => {
-                console.error('Error while deleting the directory', err);
             })
 }
 

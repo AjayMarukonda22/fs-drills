@@ -19,10 +19,6 @@ const readFileAsync = (filePath) => {
                 console.log(`Read the file: ${filePath}`);
                 return content;
             })
-            .catch((err) => {
-                console.error(`Error while reading file ${filePath}`, err);
-                throw err;
-            })
 }
 
 //convert to uppercase and write to a file
@@ -36,10 +32,6 @@ const toUppercaseAndWriteAsync = (content) => {
                         console.log(`converted the content to uppercase and wrote to file ${upperCaseFile}`)
                         return upperCaseFile;
                      })
-                     .catch((err) => {
-                        console.error(`Error while writing file ${upperCaseFile}`, err);
-                        throw err;
-                     })
 }
 
 //append the content to a file
@@ -48,10 +40,6 @@ const appendFileAsync = (fileNamesFilePath, data) => {
             .then(() => {
                 console.log(`Append the ${data} into ${fileNamesFilePath}`);
                 return data;
-            })
-            .catch((err) => {
-                console.error(`Error while appending the file ${data}`);
-                throw err;
             })
 }
 
@@ -68,10 +56,6 @@ const toLowerCaseAndWriteAsync = (content) =>  {
             console.log(`converted the content to lowercase and split it into sentences and wrote to a file ${lowerCaseFile}`);
             return lowerCaseFile;
            })
-           .catch((err) => {
-            console.error(`Error while writing the file ${lowerCaseFile}`, err);
-            throw err;
-           })
 } 
 
 //sort the content and write to a file
@@ -84,10 +68,6 @@ const sortTheContentAndWriteAsync = (content) => {
                 .then(() => {
                     console.log(`Sorted the content and wrote to file ${sortedContentFile}`);
                     return sortedContentFile;
-                })
-                .catch((err) => {
-                    console.error(`Error while writing the file ${sortedContentFile}`, err);
-                    throw err;
                 })
 }
 
@@ -105,10 +85,7 @@ const deleteFilesAsync = (content) => {
                     console.log("Deleted the files successfully");
                     return ;
                   })
-                  .catch((err) => {
-                    console.error(`Error while deleting files`, err)
-                    throw err;
-                  })
+        
  }
 
 //Promises (consuming readymade promises)
